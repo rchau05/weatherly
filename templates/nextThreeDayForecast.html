@@ -1,0 +1,6 @@
+<div class="next-three-day-forecast">
+    <div class='three-day' current-weather city="{{city}}"></div>
+    <hr>
+  	<p class="forecast-days" ng-repeat="forecast in weather.list | filter:onceDaily | limitTo:quantity" ><strong>{{forecast.dt_txt | formattedDate}}:</strong>&nbsp; Temp: {{forecast.main.temp_max}}˚F</p>
+  </div>
+

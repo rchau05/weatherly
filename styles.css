@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css?family=Bitter);
+
+body{
+	font-family: 'Bitter', serif;
+}
+
+h1{
+	color: #FAB423;
+	font: 48px;
+	float: left;
+	width: 100%;
+}
+
+input{
+	font: 25px;
+  border: 2px;
+  height: 50px;
+  margin-left: 1em;
+  width: 640px;
+}
+
+
+
+.current-weather{
+	text-align: center;
+}
+
+.forecast-container{
+	clear: both;
+}
+
+.forecast-days{
+	background-color: green;
+	float: left;
+	width: 33%;
+}
+
+.form-group{
+float: left;
+font: #D8D8D8;
+margin-top: 1em;
+
+border: #D8D8D8;
+}
+
+.row{
+	height: 80px;
+	border-bottom: 2px #D8D8D8;
+}
+
+.search{
+	overflow: hidden;
+	display: block;
+}
+
+.title{
+	display: block;
+	float: left;
+}

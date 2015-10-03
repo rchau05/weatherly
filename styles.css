@@ -1,7 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Bitter);
 
-body{
+body, html{
 	font-family: 'Bitter', serif;
+	padding: 0;
+	width: 100%;
 }
 
 h1{
@@ -13,33 +15,36 @@ h1{
 
 input{
 	font: 25px;
-  border: 2px;
+  border: 2px solid #D8D8D8;
   height: 50px;
   margin-left: 1em;
   width: 640px;
 }
 
-
-
-.current-weather{
-	text-align: center;
+.container{
+	width: 100%;
 }
 
-.forecast-container{
+.current-weather{
+	background-color: #F8E71C;
 	clear: both;
+	text-align: center;
+	width: 100%;
+	height: 420px;
 }
 
 .forecast-days{
-	background-color: green;
+	background-color: #9B9B9B;
 	float: left;
+	height: 200px;
 	width: 33%;
+	text-align: center;
 }
 
 .form-group{
 float: left;
 font: #D8D8D8;
 margin-top: 1em;
-
 border: #D8D8D8;
 }
 

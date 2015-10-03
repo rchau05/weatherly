@@ -1,4 +1,4 @@
-angular.module('weatherApp',['ngMap', 'angularMoment'])
+angular.module('weatherApp',[])
 
 .controller('MainCtrl', ['$scope', function($scope) {
 	$scope.message = {
@@ -13,7 +13,7 @@ angular.module('weatherApp',['ngMap', 'angularMoment'])
 		scope: {
 			city: '@'
 		},
-		template: '<div class="current-weather"><small>Today</small><br><h3>{{city}}</h3>{{weather.main.temp}}</div>',
+		templateUrl: 'templates/currentWeather.html',
 		controller: ['$scope', '$http',
 			function($scope, $http) {
 				var url = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=imperial&callback=JSON_CALLBACK&q='

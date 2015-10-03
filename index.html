@@ -41,24 +41,19 @@
       </div>
       <div class="col-sm-10 search">
         <form ng-submit="searchTag()" class="form-inline">
-        <div class="form-group">
-         <input type="text" ng-model="tag"  placeholder="Search city e.g. 'San Francisco'" required>
-        </div>
+          <div class="form-group">
+            <input type="text" ng-model="tag"  placeholder="Search city e.g. 'San Francisco'" required>
+          </div>
         </form>
       </div>
 
       <!-- weather results -->
       <!-- todays forecast -->
-      <div class="forecast-container">  
-      <hr>
-        <!-- fourDayForecast -->
+      <div current-weather city="San Francisco"></div>
         <!-- rest of the next three days -->
-        <div next-three-day-forecast city='San Francisco'></div>
-        <hr>
-        <!-- angularMoment -->
-          <p><strong>{{message.text}}</strong> - <span am-time-ago="message.time"></span></p>
-        <hr>
-      </div>
+      <div next-three-day-forecast one city="San Francisco"></div>
+      <div next-three-day-forecast two city="San Francisco"></div>
+      <div next-three-day-forecast three city="San Francisco"></div>
 
     </div> <!-- row -->
   </div> <!-- container -->

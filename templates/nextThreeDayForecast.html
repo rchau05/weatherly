@@ -1,4 +1,4 @@
 <div class="next-three-day-forecast">
-  	<p class="forecast-days" ng-repeat="forecast in weather.list | filter:onceDaily | limitTo:quantity" ><strong>{{forecast.dt_txt | formattedDate}}:</strong>&nbsp; Temp: {{forecast.main.temp_max}}˚F</p>
-  </div>
+  <p class="forecast-days" ng-repeat="forecast in weather.list | filter:onceDaily | limitTo:quantity" ><strong>{{forecast.dt_txt | formattedDate}}:</strong>&nbsp; {{forecast.main.temp_max}}˚F</p>
+</div>
 

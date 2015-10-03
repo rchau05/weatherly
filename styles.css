@@ -34,11 +34,23 @@ input{
 }
 
 .forecast-days{
-	background-color: #9B9B9B;
+	background-color: #FFB74D;
 	float: left;
 	height: 200px;
-	width: 33%;
+	width: 33.33%;
 	text-align: center;
+}
+
+.forecast-days:first-child{
+	background-color: #FFD63F;
+}
+
+.forecast-days:nth-child(2){
+	background-color: #FFB74D;
+}
+
+.forecast-days:nth-child(3){
+	background-color: #FFA000;
 }
 
 .form-group{

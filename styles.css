@@ -6,19 +6,32 @@ body, html{
 	width: 100%;
 }
 
+/*Weatherly*/
 h1{
 	color: #FAB423;
-	font: 48px;
+	font-size: 48px;
 	float: left;
 	width: 100%;
 }
 
+/*City name*/
+h3{
+	font-size: 35px;
+	color:#ffffff;
+}
+
 input{
-	font: 25px;
+	font-size: 25px;
   border: 2px solid #D8D8D8;
   height: 50px;
-  margin-left: 1em;
+  margin-left: 2em;
   width: 640px;
+}
+
+/*today*/
+small{
+	font-size: 15px; 
+	color: #ffffff;
 }
 
 .container{
@@ -33,23 +46,44 @@ input{
 	height: 420px;
 }
 
+.forecast-days, .forecast-temp{
+	margin: 0;
+	text-align: center;
+	width: 33.33%;
+}
+
 .forecast-days{
+	float: left;
+	height: 80px;
+}
+
+.forecast-days:nth-child(4){
+	border-bottom: 5px solid #FFD63F;
+}
+
+.forecast-days:nth-child(5){
+	border-bottom: 5px solid #FFB74D;
+}
+
+.forecast-days:nth-child(6){
+	border-bottom: 5px solid #FFA000;
+}
+
+.forecast-temp{
 	background-color: #FFB74D;
 	float: left;
 	height: 200px;
-	width: 33.33%;
-	text-align: center;
 }
 
-.forecast-days:first-child{
+.forecast-temp:first-child{
 	background-color: #FFD63F;
 }
 
-.forecast-days:nth-child(2){
+.forecast-temp:nth-child(2){
 	background-color: #FFB74D;
 }
 
-.forecast-days:nth-child(3){
+.forecast-temp:nth-child(3){
 	background-color: #FFA000;
 }
 
@@ -73,4 +107,20 @@ border: #D8D8D8;
 .title{
 	display: block;
 	float: left;
+}
+
+#today-temp{
+	font-size: 180px; 
+	color: #ffffff;
+}
+
+#temps{
+	color: #fff;
+	font-size: 85px; 
+}
+
+#days{
+	color: #FFB74D;
+	font-size: 45px;
+	width: 100%;
 }

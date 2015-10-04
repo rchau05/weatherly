@@ -1,15 +1,24 @@
 angular.module('weatherApp',[])
 
-.controller('MainCtrl', ['$scope', function($scope) {
-	$scope.message = {
-		text: 'Last updated',
-		time: new Date()
-	};
+.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
+   $scope.weather = [];
+
+    $scope.searchWeather = function () {
+      var city = $scope.city.replace(/\s+/, '');
+				var url = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=imperial&callback=JSON_CALLBACK&q=' + city;
+      $http.jsonp(url)
+        .then(function (response) {
+          console.log(response.data);
+          $scope.city = "";
+          $scope.weather = response.data;
+        });
+    }
 }])
 
 .directive('currentWeather', function() {
 	return {
 		restrict: 'AE',
+		replace: true,
 		scope: {
 			city: '@'
 		},
@@ -17,15 +26,17 @@ angular.module('weatherApp',[])
 		controller: ['$scope', '$http',
 			function($scope, $http) {
 				var url = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=imperial&callback=JSON_CALLBACK&q='
-				$scope.getWeather = function(city) {
+				$scope.searchWeather = function(city) {
 					$http({ method: 'JSONP', url: url + city })
-					.success(function(data) {
-						$scope.weather = data;
+					.then(function(response) {
+						$scope.weather = response.data;
+						console.log(response.data, $scope.weather.name);
+						$scope.city=''
 					});
 				}
 		}],
 		link: function (scope, element, attrs) {
-			scope.weather = scope.getWeather(attrs.city);
+			scope.weather = scope.searchWeather(attrs.city);
 		}
 	}
 })
@@ -37,9 +48,10 @@ angular.module('weatherApp',[])
 			city: '@'
 		},
 		templateUrl: 'templates/nextThreeDayForecast.html',
-		controller: ['$scope', '$http', function($scope, $http) {
+		controller: ['$scope', '$http', 
+		function($scope, $http) {
 			var url = "http://api.openweathermap.org/data/2.5/forecast?mode=json&units=imperial&callback=JSON_CALLBACK&q=";
-			$scope.getForecast = function(city) {
+			$scope.searchWeather = function(city) {
 				$http({ method: 'JSONP', url: url + city })
 				.success(function(data) {
 					$scope.weather = data;
@@ -51,7 +63,7 @@ angular.module('weatherApp',[])
       };
 		}],
 		link: function (scope, element, attrs) {
-			scope.weather = scope.getForecast(attrs.city);
+			scope.weather = scope.searchWeather(attrs.city);
 		}
 	};
 })

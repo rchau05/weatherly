@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Favicon -->  
+  <link rel="icon" type="image/png" sizes="25x25" href="atmosphere.png">
+
   <!-- bootstrap css -->
   <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -20,26 +23,28 @@
 </head>
 
 <body ng-controller="MainCtrl">
-  <div class="container">
+  <div class="container" ng-view>
 
     <!-- title and search container -->
+    <!-- title -->
     <div class="row">
       <div class="col-sm-2 title">
         <h1>Weatherly</h1>
       </div>
+      <!-- search -->
       <div class="col-sm-10 search">
-        <form ng-submit="searchTag()" class="form-inline">
+        <form ng-submit="searchWeather()" class="form-inline">
           <div class="form-group">
-            <input type="text" ng-model="tag"  placeholder="Search city e.g. 'San Francisco'" required>
+            <input type="text" ng-model="city"  placeholder="Search city e.g. 'San Francisco'" required>
           </div>
         </form>
       </div>
 
       <!-- weather results -->
       <!-- todays forecast -->
-      <div current-weather city="San Francisco"></div>
+      <div current-weather></div>
         <!-- rest of the next three days -->
-      <div next-three-day-forecast city="San Francisco">
+      <div next-three-day-forecast>
       </div>
 
     </div> <!-- row -->

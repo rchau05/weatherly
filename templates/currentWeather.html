@@ -1,8 +1,9 @@
 	<div class="current-weather">
   <small>Today</small>
   <br>
-  <h3>{{city}}</h3>
+  <h3>{{weather.name}}</h3>
   <br>
+  <img style = "height:48px;" src='http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png'>
   <p id="today-temp">{{weather.main.temp}}˚</p>
 </div>
 

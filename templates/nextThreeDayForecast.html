@@ -1,5 +1,6 @@
 <div class="next-three-day-forecast">
   <p class="forecast-temp" ng-repeat="forecast in weather.list | filter:onceDaily | limitTo:quantity" ><strong id="temps">{{forecast.main.temp}}˚</strong></p>
+    <img src='http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png'>
   <p class="forecast-days" ng-repeat="forecast in weather.list | filter:onceDaily | limitTo:quantity" ><strong id="days" >{{forecast.dt_txt | formattedDate }}</strong></p>
   <!-- <p class="forecast-days" ng-repeat="forecast in weather.list | filter:onceDaily | limitTo:quantity" ><strong>{{forecast.dt_txt | formattedDate}}:</strong>&nbsp; {{forecast.main.temp}}˚F</p> -->
 </div>

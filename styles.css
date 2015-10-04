@@ -21,10 +21,11 @@ h3{
 }
 
 input{
+	color: #027B31;
 	font-size: 25px;
   border: 2px solid #D8D8D8;
   height: 50px;
-  margin-left: 2em;
+  margin-left: 3em;
   width: 640px;
 }
 
@@ -95,8 +96,8 @@ border: #D8D8D8;
 }
 
 .row{
+	border-bottom: 2px solid #D8D8D8;
 	height: 80px;
-	border-bottom: 2px #D8D8D8;
 }
 
 .search{

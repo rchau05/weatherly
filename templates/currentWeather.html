@@ -1,9 +1,10 @@
 	<div class="current-weather">
   <small>Today</small>
   <br>
-  <h3>{{weather.name}}</h3>
+  <h3 ng-model="city">{{weather.name}}</h3>
   <br>
-  <img style = "height:48px;" src='http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png'>
-  <p id="today-temp">{{weather.main.temp}}˚</p>
+  <img style = "height:48px;" ng-src='images/{{icon}}'>
+  <p id="today-temp">{{weather.main.temp}} &ordm;</p>
+  <ng-transclude></ng-transclude>
 </div>
 

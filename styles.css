@@ -105,6 +105,14 @@ border: #D8D8D8;
 	display: block;
 }
 
+.three-day-icons{
+	bottom: 100px;
+	display: block;
+  float: none;
+  margin: 0 auto;
+  position: relative;  
+}
+
 .title{
 	display: block;
 	float: left;
@@ -117,7 +125,10 @@ border: #D8D8D8;
 
 #temps{
 	color: #fff;
-	font-size: 85px; 
+  font-size: 85px;
+  position: relative;
+  text-align: center;
+  top: 70px;
 }
 
 #days{

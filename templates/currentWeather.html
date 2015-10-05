@@ -1,10 +1,12 @@
+<!-- found ordm at:  -->
+<!-- https://code.google.com/p/doctype-mirror/wiki/OrdmCharacterEntity	 -->
+
 	<div class="current-weather">
   <small>Today</small>
   <br>
   <h3 ng-model="city">{{weather.name}}</h3>
   <br>
-  <img style = "height:48px;" ng-src='images/{{icon}}'>
-  <p id="today-temp">{{weather.main.temp}} &ordm;</p>
+  <img style = "height:48px;" ng-src="images/{{icon}}" 'icon image'>
+  <p id="today-temp">{{weather.main.temp | number: 0}} &ordm;</p>
   <ng-transclude></ng-transclude>
 </div>
-

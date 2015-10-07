@@ -1,44 +1,51 @@
-angular.module('weatherApp',[])
+angular.module('weatherly',[])
 
-.controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
-   $scope.weather = [];
+// .controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+   // $scope.weather = [];
 
-    $scope.searchCity = function () {
-      var city = $scope.city.replace(/\s+/, '');
-       var url = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=imperial&callback=JSON_CALLBACK&q=' + city;
-      $http.jsonp(url)
-        .then(function (response) {
-        if (response == undefined || response == null){
-          alert("No City Found!");
-        } else {
-          $scope.city = "";
-          $scope.weather = response.data;
-          console.log($scope.weather)
-          }
-        });
-    }
-    $scope.number ="123123"
+    // $scope.searchCity = function () {
+    //   var city = $scope.search;
+    //   console.log(city);
+    //    var url = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=imperial&callback=JSON_CALLBACK&q=' + city;
+    //   $http.jsonp(url)
+    //     .then(function (response) {
+    //     if (response == undefined || response == null){
+    //       alert("No City Found!");
+    //     } else {
+    //       var city = $scope.search;
+    //       console.log(city)
+    //      $scope.city = "";
+    //       $scope.weather = response.data;
+    //       console.log($scope.weather)
+    //       }
+    //     });
+    // }
 
-}])
+// }])
 
-.directive('currentWeather', function() {
+.directive('ngCurrentWeather', function () {
+  var url = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=imperial&callback=JSON_CALLBACK&q='
   return {
     restrict: 'AE',
+    require: '^ngModel',
     transclude: true,
     scope: {
-      city: '@'
+      ngModel: '@',
+      // ngCity: '@',
     },
     templateUrl: 'templates/currentWeather.html',
     controller: ['$scope', '$http',
       function($scope, $http) {
-        var url = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=imperial&callback=JSON_CALLBACK&q='
         $scope.searchCity = function(city) {
+          // var city = $scope.search
+          // console.log(city)
           $http({ method: 'JSONP', url: url + city })
           .success(function(data) {
-            console.log(data)
+            // console.log(data)
             $scope.weather = data;
-            console.log($scope.weather);
-            $scope.city=''
+            console.log($scope.weather)
+  
+            // console.log($scope.weather);
              $scope.id = data.weather[0].id;
             if ($scope.id >= 200 && $scope.id <= 299){
               $scope.icon = "thunderstorm.png";
@@ -57,27 +64,40 @@ angular.module('weatherApp',[])
         }
     }],
     link: function (scope, element, attrs) {
-      scope.weather = scope.searchCity(attrs.city);
+      scope.searchCity(attrs.city);
+      console.log(scope.searchCity)
+      console.log(attrs)
     }
   }
 })
 
-.directive('nextThreeDayForecast', function() {
+.directive('ngCity', function() {
+  return {
+    controller: function($scope) {}
+  }
+})
+
+
+.directive('ngNextThreeDayForecast', function() {
   return {
     restrict: 'AE',
+    replace: true,
+    require: '^ngModel',
     transclude: true,
     scope: {
-      city: '@'
+      ngModel: '@'
+      // ngCity: '@'
     },
     templateUrl: 'templates/nextThreeDayForecast.html',
     controller: ['$scope', '$http', 
     function($scope, $http) {
+      // var city = $scope.city.replace(/\s+/, '');
       var url = "http://api.openweathermap.org/data/2.5/forecast?mode=json&units=imperial&callback=JSON_CALLBACK&q=";
       $scope.searchCity = function(city) {
         $http({ method: 'JSONP', url: url + city })
         .success(function(data) {
           $scope.weather = data;
-          console.log($scope.weather);
+          // console.log($scope.weather);
           $scope.city=''
           $scope.id = data.list[0].weather[0].id;
             if ($scope.id >= 200 && $scope.id <= 299){
@@ -102,6 +122,7 @@ angular.module('weatherApp',[])
     }],
     link: function (scope, element, attrs) {
       scope.weather = scope.searchCity(attrs.city);
+      console.log(scope.weather)
     }
   };
 })

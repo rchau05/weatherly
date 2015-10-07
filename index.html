@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="weatherApp">
+<html lang="en" ng-app="weatherly">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,9 +26,8 @@
 
 </head>
 
-<body ng-controller="MainCtrl">
+<body>
   <div class="container">
-<!-- <ng-view></ng-view> -->
     <!-- title and search container -->
     <!-- title -->
     <div class="row">
@@ -37,18 +36,22 @@
       </div>
       <!-- search -->
       <div class="col-sm-10 search">
-        <form ng-submit="searchCity()" class="form-inline">
+        <form ng-submit="searchCity()" class="form-inline" auto-focus>
           <div class="form-group">
-            <input type="text" ng-model="city"  placeholder="Search city e.g. 'San Francisco'" required>
+            <input type="text" ng-model="city" placeholder="Search city e.g. 'San Francisco'" required>
+            <input type="submit" id="button" value="Search">
+            <!-- <p ng-click="update()">{{ weather.main.temp }}</p> -->
           </div>
+
+        
         </form>
       </div>
 
       <!-- weather results -->
       <!-- todays forecast -->
-      <div current-weather></div>
+      <div ng-model="city" ng-current-weather></div>
         <!-- rest of the next three days -->
-      <div next-three-day-forecast></div>
+      <div ng-model="city" ng-next-three-day-forecast></div>
 
     </div> <!-- row -->
   </div> <!-- container -->

@@ -136,3 +136,7 @@ border: #D8D8D8;
 	font-size: 45px;
 	width: 100%;
 }
+
+#button{
+	display: none;
+}

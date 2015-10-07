@@ -1,7 +1,6 @@
-<div class="next-three-day-forecast">
+<div ng-city="San Francisco" class="next-three-day-forecast">
   <p class="forecast-temp" ng-repeat="forecast in weather.list | filter:onceDaily | limitTo:quantity" ><strong id="temps">{{forecast.main.temp | number: 0}}&ordm;</strong>
     <img class="three-day-icons" style = "height:48px;" ng-src="images/{{icon}}" alt='icon images'>
 	</p>
   <p class="forecast-days" ng-repeat="forecast in weather.list | filter:onceDaily | limitTo:quantity" ><strong id="days" >{{forecast.dt_txt | formattedDate }}</strong></p>
-  <ng-transclude></ng-transclude>
 </div>

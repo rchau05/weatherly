@@ -19,45 +19,16 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
   
   <!-- ngRoute -->
-  <!-- // <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script> -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
   
   <!-- custom script -->
   <script type="text/javascript" src="app.js"></script>
 
 </head>
 
-<body>
-  <div class="container">
-    <!-- title and search container -->
-    <!-- title -->
-    <div class="row">
-      <div class="col-sm-2 title">
-        <h1>Weatherly</h1>
-      </div>
-      <!-- search -->
-      <div class="col-sm-10 search">
-        <form ng-submit="searchCity()" class="form-inline" auto-focus>
-          <div class="form-group">
-            <input type="text" ng-model="city" placeholder="Search city e.g. 'San Francisco'" required>
-            <input type="submit" id="button" value="Search">
-            <!-- <p ng-click="update()">{{ weather.main.temp }}</p> -->
-          </div>
-
-        
-        </form>
-      </div>
-
-      <!-- weather results -->
-      <!-- todays forecast -->
-      <div ng-model="city" ng-current-weather></div>
-        <!-- rest of the next three days -->
-      <div ng-model="city" ng-next-three-day-forecast></div>
-
-    </div> <!-- row -->
-  </div> <!-- container -->
-  
-  <!-- filler for the bottom.  Means absolutely nothing -->
-  <div style="height:50px"></div>
+<body ng-controller="MainCtrl">
+    
+      <div ng-view></div>
 
 </body>
 </html>

@@ -17,14 +17,24 @@ angular.module('weatherly', ['ngRoute'])
     $scope.searchCity = function () {
       var city = $scope.city.replace(/\s+/, '');
       console.log(city)
-      var url = 'http://api.openweathermap.org/data/2.5/weather?mode=json&units=imperial&callback=JSON_CALLBACK&q=' + city
+      var url = "http://api.openweathermap.org/data/2.5/forecast/daily?&cnt=4&units=imperial&q="+city+"&type=accurate&,us&mode=json&callback=JSON_CALLBACK&APPID=8aa25b237192dd69078ca44e1b1e2598"
       $http.jsonp(url)
       .then(function (response) {
         console.log(response)
-        $scope.weather = response.data
-        console.log($scope.weather)
-        $scope.id = response.data.weather[0].id;
-        // console.log($scope.id)
+
+        // getting city name for title
+        $scope.searchedCity = response.data.city.name;
+
+        // setting today's temperature
+        $scope.temp = response.data.list[0].temp.day;
+
+        //setting next three days forecast
+        $scope.forecast = response.data.list;
+        console.log($scope.forecast)
+
+        // getting weather id + icons
+        $scope.id = response.data.list[0].weather[0].id;
+        console.log($scope.id)
         if ($scope.id >= 200 && $scope.id <= 299){
           $scope.icon = "thunderstorm.png";
         }if ($scope.id >= 300 && $scope.id <= 399){
@@ -39,18 +49,7 @@ angular.module('weatherly', ['ngRoute'])
           $scope.icon = "clouds.png";
         };
 
-        var weatherUrl = "http://api.openweathermap.org/data/2.5/forecast?mode=json&units=imperial&callback=JSON_CALLBACK&q=" + city;
-        $http.jsonp(weatherUrl)
-        .then(function (response) {
-          console.log(response)
-          $scope.quantity = 3;
-          $scope.forecasts=[]
-          $scope.forecasts.push(response.data.list[2], response.data.list[10], response.data.list[18])
-          console.log($scope.forecasts)
-          $scope.onceDaily = function(forecasts) {
-            return forecasts.dt_txt.indexOf('09:00:00') > -1; 
-          }; //$scope.onceDaily = function(forecasts) 
-        }); //.then(function(response))
+
       }); //.then(function (response) {
     }; //$scope.searchCity
   }]) //controller

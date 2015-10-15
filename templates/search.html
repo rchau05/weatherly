@@ -21,17 +21,25 @@
 <div class="current-weather">
   <small>Today</small>
   <br>
-  <h3>{{city}}</h3>
+  <h3>{{searchedCity}}</h3>
   <br>
   <img style = "height:48px;" ng-src="images/{{icon}}" 'icon image'>
-  <p id="today-temp">{{weather.main.temp | number: 0}} &ordm;</p>
+  <p id="today-temp">{{temp | number: 0}} &ordm;</p>
 </div>
 
 <!-- Three Day Forecast -->
 <div class="next-three-day-forecast">
-  <p class="forecast-temp" ng-repeat="day in forecasts | filter:onceDaily | limitTo:quantity" ><strong id="temps">{{day.main.temp | number: 0}}&ordm;</strong>
-  <!-- <p class="forecast-temp"><strong id="temps">{{forecast.main.temp | number: 0}}&ordm;</strong> -->
-    <img class="three-day-icons" style = "height:48px;" ng-src="images/{{icon}}" alt='icon images'>
+  <!-- Next Day -->
+  <p class="forecast-temp" ><strong id="temps">{{forecast[1].temp.day | number: 0}}&ordm;</strong>
+  <img class="three-day-icons" style = "height:48px;" ng-src="images/{{icon}}" alt='icon images'>
+  
+  <!-- Second day -->
+  <p class="forecast-temp" ><strong id="temps">{{forecast[2].temp.day | number: 0}}&ordm;</strong>
+  <img class="three-day-icons" style = "height:48px;" ng-src="images/{{icon}}" alt='icon images'>
+  
+  <!-- Third Day -->
+  <p class="forecast-temp" ><strong id="temps">{{forecast[3].temp.day | number: 0}}&ordm;</strong>
+  <img class="three-day-icons" style = "height:48px;" ng-src="images/{{icon}}" alt='icon images'>
   </p> 
   <p class="forecast-days" ng-repeat="day in forecasts | filter:onceDaily | limitTo:quantity" ><strong id="days" >{{day.dt_txt | formattedDate }}</strong></p>
 </div>

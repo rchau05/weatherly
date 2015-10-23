@@ -30,7 +30,7 @@ angular.module('weatherly', ['ngRoute'])
 
         //setting next three days forecast
         $scope.forecast = response.data.list;
-        console.log($scope.forecast)
+        console.log("Forecast",$scope.forecast)
 
         // getting weather id + icons
         $scope.id = response.data.list[0].weather[0].id;
@@ -48,6 +48,47 @@ angular.module('weatherly', ['ngRoute'])
         }else{ ($scope.id >= 800 && $scope.id <= 899)
           $scope.icon = "clouds.png";
         };
+
+        // get UNIX time/date
+        // $scope.dt = response.data.list[1].dt;
+        $scope.dt = response.data.list[1].dt;
+
+        // convert it into human friendly date
+        dt = $scope.dt
+        
+        function timeConverter(dt){
+
+        var a = new Date($scope.dt * 1000);
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+        var time = month + ' ' + date + ' ' +  year + ' ' + hour + ':' + min + ':' + sec ;
+        var monthDay = month + ' ' + date;
+          return monthDay;
+      }
+      console.log('')
+      for (var i = 0; i < $scope.forecast.length-1; i++) {
+        $scope.forecast[i].time =  timeConverter(dt);
+      console.log($scope.forecast[i].time)
+      };
+      // $scope.time = timeConverter(dt);
+      console.log(timeConverter(dt))
+
+  //       // getting UNIX timestamp
+
+  //         var myDate = new Date();
+
+  // var dayOfWeek = myDate.getDate();
+  // var month = myDate.getMonth();
+  // var day = myDate.getDay();
+  // // getDate() getMonth() getDay() 
+
+  // // alert(dt.getDate());
+  // // returns: Thu Oct 15 2015 16:23:24 GMT-0700 (PDT)
 
 
       }); //.then(function (response) {

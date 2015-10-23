@@ -41,6 +41,6 @@
   <p class="forecast-temp" ><strong id="temps">{{forecast[3].temp.day | number: 0}}&ordm;</strong>
   <img class="three-day-icons" style = "height:48px;" ng-src="images/{{icon}}" alt='icon images'>
   </p> 
-  <p class="forecast-days" ng-repeat="day in forecasts | filter:onceDaily | limitTo:quantity" ><strong id="days" >{{day.dt_txt | formattedDate }}</strong></p>
+  <p class="forecast-days" ng-repeat="day in forecast | filter:onceDaily | limitTo:quantity" ><strong id="days" >{{day.time}}</strong></p>
 </div>
 
